@@ -7,13 +7,13 @@ import {
 } from './constants';
 
 export const setSearchField = (text) => ({
-    type: 'CHANGE_SEARCH_FIELD',
+    type: CHANGE_SEARCH_FIELD,
     payload: text
 })
 
 export const requestRobots = () => (dispatch) => {
     dispatch({ type: REQUEST_ROBOTS_PENDING})
-    apiCall('http://jsonplaceholder.typicode.com/users')
+    apiCall('https://jsonplaceholder.typicode.com/users')
         .then(data => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
-        .then(error => dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error }))
+        .catch(error => dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error }))
 }
